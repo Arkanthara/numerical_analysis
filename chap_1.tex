@@ -1,4 +1,7 @@
 \documentclass{article}
+\usepackage{amsfonts}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
 
 \title{Chapitre 1: Interpolation polynomiale}
 
@@ -27,5 +30,68 @@ $$c_k = \delta^k y[x_0, \dots, x_k]$$
 Il est de degré $\leq$ n et passe par les points $(x_0, y_0), \dots, (x_n, y_n)$ où les $x_i$ sont distinct.
 
 \subsection{Lemme}
-Soit $f: [a, b] \rightarrow \mathbb{R}$ une fonction n fois dérivable et soit $y_i = f(x_i)$ pour $x_0, \dots, x_n$
+Soit $f: [a, b] \rightarrow \R$ une fonction n fois dérivable et soit $y_i = f(x_i)$ pour $x_0, \dots, x_n \in [a, b]$ distincts.
+
+Alors $\exists \zeta \in [a, b]$ tel que:
+$$\delta^n y[x_0, \dots, x_n] = \frac{f^{(n)}(\zeta)}{n!}$$
+
+\subsection{Théorème}
+Soit $f: [a, b] \rightarrow \R$ une fonction $n+1$ fois dérivable et $p(x)$ le polynôme d'interpolation de degré $\leq$ n et passant par les points $(x_0, f(x_0)), \dots, (x_n, f(x_n))$
+($x_i \in [a, b]$ et distincts).
+
+Alors $\forall x$, $\exists \zeta$ dépendant de $x$ tel que:
+$$f(x) - p(x) = (x - x_0)\dots(x - x_n)\frac{f^{(n + 1)}(\zeta)}{(n + 1)!}$$
+
+\subsection{Définition (Polynômes de Chebyshev)}
+Les polynômes de Chebyshev sont définis $\forall n \in \N$ par:
+$$T_n(x) = cos(n * arcos(x))\ \forall x \in [-1, 1]$$
+
+\subsection{Propriétés (Polynômes de Chebyshev)}
+\begin{itemize}
+    \item $T_n$ est un polynôme de degré $n$ et pour $n \geq 1$ de la forme: $T_n(x)=2^{n-1}x^n + \dots$
+    \item $T_n$ satisfait la récurrence:
+    \begin{itemize}
+        \item $T_0(x) = 0$
+        \item $T_1(x) = x$
+        \item $T_{n + 1}(x) = 2xT_n(x) - T_{n -1}(x)$
+    \end{itemize}
+    \item $|T_n(x)| \leq 1$ pour $x \in [-1, 1]$
+    \item $T_n(cos\frac{(2k + 1)\pi}{2n}) = 0$ pour $k = 0, \dots, n - 1$
+    \item $T_n(cos\frac{k\pi}{n}) = (-1)^k$ pour $k = 0, \dots, n$
+\end{itemize}
+
+\subsection{Lemme}
+Soit $q(x) = 2^{n - 1}x^n + b_{n-1}x^{n - 1} + \dots + b_0$ tel que $q(x) \neq T_n(x)$
+
+Alors $\forall x \in [-1, 1]$, on a:
+
+$$max(|q(x)|) > max(|T_n(x)|) = 1$$
+
+\subsection{Théorème}
+L'expression $|(x - x_0)\dots(x - x_n)|$ est minimale pour $x \in [a, b]$ pour toutes les divisions $a \leq x_0 < \dots < x_n \leq b$
+si et seulement si $\forall k = 0, \dots, n$
+$$x_k = \frac{b + a}{2} + \frac{b - a}{2}cos\frac{(2k + 1)\pi}{2n + 2}$$
+
+\subsection{Théorème}
+Soit $f(x)$ une fois continuement dérivable sur $[a,b]$ et $p_n$ le polynôme d'interpolation passant par $(x_0, f(x_0)), \dots, (x_n, f(x_n))$
+et respectant $\forall k = 0, \dots, n$:
+$$x_k = \frac{b + a}{2} + \frac{b - a}{2}cos\frac{(2k + 1)\pi}{2n + 2}$$
+Alors pour $ n \rightarrow \infty$
+$$\max_{x \in [a,b]}|f(x) - p(x)| \rightarrow 0$$
+
+\subsection{Théorème}
+Soient les points $x_0, \dots, x_n$ tous distincts et les points $y_0, \dots, y_n$ et $z_0, \dots, z_n$.
+
+Alors il existe un unique polynôme $p_{2n + 1}$ de degré $\leq 2n + 1$, appelé le polynôme d'interpolation d'Hermite tel que $\forall i = 0, \dots, n$:
+\begin{itemize}
+    \item $p_{2n + 1}(x_i)  = y_i$
+    \item $p_{2n + 1 }^{'}(x_i) = z_i$
+\end{itemize}
+
+\subsection{Théorème}
+Soit $f: [a, b] \rightarrow \R$ $2n + 2$ fois dérivable et $p(x)$ le polynôme d'interpolation d'Hermite.
+
+Alors $\forall x \in [a, b]$, $\exists \zeta $ tel que:
+$$f(x) - p(x) = (x - x_0)^2\dots(x - x_n)^2 \frac{f^{(2n + 2)}(\zeta)}{(2n + 2)!}$$
+
 \end{document}
