@@ -1,0 +1,28 @@
+\documentclass{article}
+
+\title{Chapitre 1: Interpolation polynomiale}
+
+\begin{document}
+
+\maketitle
+
+\section{Les polynômes de Lagrange et la formule de Newton}
+\subsection{Théorème}
+Soient les n + 1 points $(x_0, y_0), . . . , (x_n , y_n )$ où les $x_i$ sont distincts. Alors, il
+existe un polynôme unique $p_n$ de degré $\leq n$, appelé le polynôme d’interpolation, tel que
+$$p_n (x_i ) = y_i\ pour\ i = 0, 1, . . . , n$$.
+
+\subsection{Définition (différences divisées)}
+Soient les couples $(x_i, y_i)$ avec chaque $x_i$ distinct pour $i = 0, \dots, n$. On définit:
+$$\delta y[x_i, x_{i+1}]\ = \ \frac{y_{i + 1} - y_i}{x_{i+1} - x_i}$$
+et pour $k = 2, 3, \dots$, on a:
+$$\delta^k y[x_i, x_{i + 1}]\ = \ \frac{\delta^{k - 1} y[x_{i + 1}, \dots, x_{i + k}]- \delta^{k-1} y[x_i, \dots, x_{i + k - 1}]}{x_{i + k} - x_i}$$
+À modifier ????
+On note $\delta^0 y[x_i] = y[x_i] = y_i$
+\subsection{Théorème (Formule de Newton, 1669)}
+Le polyôme de Newton est défini par:
+$$p_n(x) = c_0 + c_1(x-x_0) + \dots + c_n(x - x_0)\dots (x-x_{n - 1})$$
+avec:
+$$c_k = \delta^k y[x_0, \dots, x_k]$$
+Il est de degré $\leq$ n et passe par les points $(x_0, y_0), \dots, (x_n, y_n)$ où les $x_i$ sont distinct.
+\end{document}
