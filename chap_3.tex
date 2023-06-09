@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{amsfonts}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\y}{\vec{y}}
+\newcommand{\x}{\vec{x}}
+
+\title{Chapitre 3: condition et stabilité}
+
+\begin{document}
+\maketitle
+
+\section{}
+\section{}
+\section{}
+
+\subsection{Définition}
+Soient $\x \in {\R}^{n}$ et $f: {\R}^n \rightarrow {\R}^m$ tel que $\x \neq 0$ et $f(\x) \neq 0$
+
+La condition $\kappa = \kappa (f(\x))$ du problème $f$ en $x$ est le plus petit nombre tel que $\forall \epsilon > 0$ et $\forall \y \neq \x$, on a:
+$$\frac{||\y - \x||}{||\x||} \leq \epsilon \ \Rightarrow \ \frac{||f(\y) - f(\x)||}{||f(\x)||} \leq \kappa \epsilon + o(\epsilon)$$
+On dit que $f$ est bien conditionné en $\x$ si $\kappa$ n'est pas trop grand comparé à $\epsilon_{mach}$. Sinon, on dit que $f$ est mal conditionné.
+
+\subsection{}
+
+\subsection{Définition (Norme opérateur)}
+Soit $A \in {\R}^{m * n}$. On définit:
+$$A_{p \rightarrow q} = \max_{||\x||_p = 1}||A\x||_q = \max_{\x \neq 0}\frac{||A\x||_q}{||\x||_p}$$
+Donc $||A||_{p \rightarrow q}$ est le plus petit nombre tel que $||A\x||_q \leq ||A||_{p \rightarrow q} ||\x||_p$ $\forall \x \neq 0$
+
+\subsection{Propriétés (des normes d'opérateur)}
+Soit $A^{m*n}$. Alors la norme d'opérateur $||A||$ est une norme matricielle respectant:
+\begin{itemize}
+    \item $||A|| \geq 0$
+    \item $||A|| = 0 \ \Leftrightarrow \ A=0$
+    \item $||A + B|| \leq ||A|| + ||B||$
+    \item $||\alpha A|| = |\alpha|*||A||$
+    \item $||A\x|| \leq ||A||* ||\x||\ \forall x \in {\R}^n$
+    \item $||A*B|| \leq ||A|| * ||B||\ \forall B \in {\R}^{n * p}$ et $||B||$ une norme d'opérateur.
+\end{itemize}
+
+\subsection{Théorème}
+Soit $f: {\R}^n \rightarrow {\R}^m$ différentiable. Alors la contition $\kappa$ de $f$ en $\x$ satisfait:
+$$\kappa = \lim_{\epsilon \rightarrow 0} \sup(\frac{||f(\y) - f(\x)}{\epsilon||f(\x)||}:\frac{||\y - \x||}{||\x||} \leq \epsilon) = \frac{||f'(\x)|| * ||\x||}{||f(\x)||}$$
+
+\subsection{}
+
+\subsection{Corollaire}
+Soient $f_1, \dots, f_n$ différentiables. Alors la condition de $f = f_1 \circ \dots \circ f_n$ satisfait:
+$$\kappa(f) \leq \kappa(f_1) \cdot \dots \cdot \kappa (f_n)$$
+
+\subsection{Définition}
+Un algorithme $\tilde{f}$ pour un problème $f$ est forward stable (stable au sens direct) si $\forall \x $:
+$$\frac{||\tilde{f}(\x) - f(\x)||}{||f(\x)||} \leq C \cdot \kappa_{f, \x} \cdot \epsilon_{mach} + o(\epsilon_{mach})$$
+où $C$ ne dépend pas de $\x$.
+
+\subsection{}
+\subsection{}
+\subsection{Définition (Principe de Wilkinson)}
+Un algorithme $\tilde{f}$ pour un problème $f$ est backward stable si: $\forall \x,\ \exists \tilde{\x}$ tel que:
+$$\tilde{f}(\x) = f(\tilde{\x}) \ et \ \frac{||\tilde{\x} - \x||}{||\x||} \leq C \cdot \epsilon_{mach} + o(\epsilon_{mach})$$
+où $C$ ne dépend pas de $\x$ et n'est pas trop grand.
+
+Autrement dit, le résultat d'un algorithme qui est backward stable correspond au résultat exacte de données légèrement perturbées...
+\subsection{}
+\subsection{Théorème}
+Soit $\tilde{f}$ un algorithme qui est backward stable pour le problème $f$. Alors $\tilde{f}$ est aussi forward stable.
+\subsection{Théorème}
+Soit $f$ un problème défini de ${\R}^n$ dans ${\R}^m$ ($f: {\R}^n \rightarrow {\R}^m$). Le fait que $f$ soit bien ou mal conditionné ne dépend pas
+du choix des normes sur ${\R}^n$ et ${\R}^m$. C'est aussi vrai pour un algorithme qui est backward stable ou forward stable.
+
+\end{document}
