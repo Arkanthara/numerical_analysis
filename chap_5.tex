@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{amsfonts}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\x}{\vect{x}}
+\newcommand{\y}{\vect{y}}
+\newcommand{\b}{\vect{b}}
+
+\title{Chapitre 5}
+
+\begin{document}
+\maketitle
+\subsection{Définition condition matrice}
+Soit $A$ une matrice inversible. On appelle $\kappa(A)$ la condition de la matrice $A$ pour la norme d'opérateur $||\cdot||$ définie par:
+$$\kappa(A) = ||A|| \cdot ||A^{-1}||$$
+
+\subsection{Théorème}
+Soit $A$ une matrice inversible. Alors pour toute norme d'opérateur $||\cdot||$, on a:
+\begin{itemize}
+    \item $\kappa(A) \geq 1$
+    \item $\kappa(\alpha A) = \kappa (A),\ \forall \alpha \neq 0$
+    \item $\kappa (A) = \frac{\max_{||\y|| = 1}||A\y||}{\min_{||\x|| = 1}||A\x||}$
+\end{itemize}
+
+\subsection{}
+
+\subsection{Théorème}
+Soient $A\x = \b$ avec $\b \neq 0$ et $(A + \delta A)\y = \b + \delta \b $ où $A$ est une matrice
+inversible et $||\delta A|| \leq \epsilon_{A} ||A||$ et $||\delta \b|| \leq \epsilon_b||\b||$. Si $\epsilon_A \kappa(A) < 1$, alors:
+$$\frac{||\y - \x||}{||\x||} \leq \frac{1}{1 - \epsilon_A \kappa(A)(\epsilon_A \kappa (A) + \epsilon_b||A^{-1}||\frac{||\b||}{||\x||})}$$
+
+\subsection{Corollaire}
+La condition de résolution de $A\x = \b$ satisfait:
+$$\kappa_{A, b} = \kappa (A) + ||A^{-1}||\frac{||\b||}{||A^{-1}\b||} \leq 2\cdot \kappa(A)$$
+
+\subsection{}
+\subsection{Lemme}
+Soit $L_k$ la matrice définie par:
+$$ L_k = 
+\begin{matrix}
+    
+\end{matrix}
+
+\end{document}
