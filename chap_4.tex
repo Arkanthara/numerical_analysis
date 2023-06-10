@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{amsfonts}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\x}{\vec{x}}
+\newcommand{\y}{\vec{y}}
+\title{Chapitre 4}
+\begin{document}
+\maketitle
+\section{}
+\section{}
+\section{}
+\section{}
+
+\subsection{Définition}
+Une formule de quadrature à $s$ étages est donné par:
+$$\int_{0}^{1}g(t)dt \simeq \sum_{i = 1}^{s}b_i\cdot g(c_i)$$
+Les $c_i$, supposés distincts, sont appelés les noeuds et les $b_i$ sont appelés les poids.
+
+\subsection{}
+\subsection{Définition}
+La formule de quadrature est dite d'ordre p si elle est exacte pour tous les polynômes d'ordre $\leq$ p - 1. En d'autres termes, si:
+$$\int_{0}^{1}g(t)dt = \sum_{i = 1}^{s}b_i\cdot g(c_i) \ \forall g \in {\mathbb{P}}_{p - 1}$$
+
+\subsection{Théorème}
+Soit $\sum_{i = 1}^{s}b_i \cdot g(c_i)$ une formule de quadrature symétrique, c'est à dire:
+$$ c_i = 1 - c_{s - i + 1},\ \ b_i = b_{s - i + 1}$$
+qui est exacte pour les polynômes de degré $\leq 2m$, alors elle est automatiquement exacte pour les polynômes de degré $2m + 1$
+
+\subsection{Lemme}
+Considérons une formule de quadrature d'ordre p. Si $f: [x_0, x_0 + h] \rightarrow \R$ est p fois continûment dérivable, alors:
+$$|E_s(f, x_0, h)| \leq C\cdot h^{p + 1} \max_{0 \leq t \leq 1}|f^{(p)}(x_0 + t\cdot h)|$$
+où $C$ ne dépend pas de $f$ et de $h$, avec:
+$$E_s(f, x_0, h) = h(\int_{0}^{1}f(x_0 + t \cdot h)dt - \sum_{i = 1}^{s}b_i \cdot f(x_0 + c_i \cdot h))$$
+
+\subsection{Théorème}
+Soit $f: [a, b] \rightarrow \R$ une fonction $p$ fois continûment dérivable et soit l'ordre de la formule de quadrature égal à p. Alors l'erreur satisfait:
+$$err \leq C \cdot h^p (b-a) \max_{a \leq x \leq b}|f^{(p)}(x)|$$
+avec $C$ qui ne dépend pas de $f$, ni de $h$ et $h = \max_{j = 1, \dots, N}|h_j|$
+
+\subsection{Lemme (Jacobi 1826)}
+Soit $(b_i, c_i)_{i = 1}^{s}$ une formule de quadrature d'ordre $p \geq s$. Alors elle est d'ordre $\geq m + s$ si et seulement si:
+$$\int_{0}^{1}M(t)q(t)=0$$
+$$\forall q  \in \mathbb{P}_{m - 1} \ et\ M(t) = (t - c_1)\dots(t - c_s)$$
+
+\subsection{Théorème}
+L'ordre d'une formule à 2 étages est $\leq 2s$.
+
+\subsection{Théorème}
+Le polynôme de Legendre $P_k$ existe $\forall k \geq 0$ et son degré est exactement égal à $k$. En plus, les $P_0, \dots, P_k$
+forment une base orthogonale pour $\mathbb{P}_k$ avec:
+$$\langle f, g \rangle = \int_{-1}^{1}f(t)g(t)dt$$
+
+\subsection{Théorème}
+Les polynômes de Legendre avec $P_k(1) = 1$ satisfont:
+\begin{itemize}
+    \item $P_0(t) = 1$
+    \item $P_1(t) = t$
+    \item $(k + 1)P_{k + 1}(t) = (2k + 1)\cdot t \cdot P_k(t) - k P_{k -1}(t),\ \forall k \geq 1$
+\end{itemize}
+
+\subsection{}
+\subsection{Théorème}
+Toutes les racines de $P_k$ sont réelles, simples et dans $(-1, 1)$.
+
+\subsection{}
+\subsection{Théorème (Formules de quadrature de Gauss, 1814)}
+Pour chaque entier positif $s$, il existe une formule de quadrature à s étages d'ordre $p = 2s$. Elle est donnée par:
+$$\sum_{i = 1}^{s} b_i \cdot g(c_i) \simeq \int_{0}^{1}g(t)dt$$
+où:
+\begin{itemize}
+    \item Les noeuds $c_1, \dots, c_s$ sont les racines distinctes de $P_s(2t - 1)$
+    \item Les poids $b_i$ sont donnés par:
+    $$b_i = \int_{0}^{1}l_i(t)dt, \ \ l_i(t) = \prod_{j = 1, j \neq i}^{s}\frac{t - c_j}{c_i - c_j}$$
+\end{itemize}
+
+\end{document}
